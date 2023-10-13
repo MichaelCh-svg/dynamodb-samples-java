@@ -19,8 +19,7 @@ export class VisitsDAO {
   /**
    * Retrieve the number of times visitor has visited location
    *
-   * @param visitor
-   * @param location
+   * @param visit
    * @return
    */
   async getVisitCount(visit: Visit): Promise<number> {
@@ -43,8 +42,7 @@ export class VisitsDAO {
   /**
    * Increment the number of times visitor has visited location
    *
-   * @param visitor
-   * @param location
+   * @param visit
    */
   async recordVisit(visit: Visit): Promise<void> {
     // load it if it exists
@@ -77,7 +75,7 @@ export class VisitsDAO {
       UpdateExpression:
         "SET " + this.VisitCountAttr + " = " + this.VisitCountAttr + " + :inc",
     };
-    ddbDocClient.send(new UpdateCommand(params));
+    await ddbDocClient.send(new UpdateCommand(params));
   }
 
   private async getVisit(visit: Visit): Promise<Visit | undefined> {
@@ -98,8 +96,7 @@ export class VisitsDAO {
   /**
    * Delete all visits of visitor to location
    *
-   * @param visitor
-   * @param location
+   * @param visit
    */
   async deleteVisit(visit: Visit): Promise<void> {
     let params = {
@@ -113,8 +110,8 @@ export class VisitsDAO {
    * Fetch the next page of locations visited by visitor
    *
    * @param visitor The visitor of interest
-   * @param pageSize The maximum number of locations to include in the result
    * @param lastLocation The last location returned in the previous page of results
+   * @param limit The maximum number of locations to include in the result
    * @return The next page of locations visited by visitor
    */
 
@@ -167,8 +164,8 @@ export class VisitsDAO {
    * Fetch the next page of visitors who have visited location
    *
    * @param location The location of interest
-   * @param pageSize The maximum number of visitors to include in the result
    * @param lastVisitor The last visitor returned in the previous page of results
+   * @param limit The maximum number of visitors to include in the result
    * @return The next page of visitors who have visited location
    */
   async getVisitors(
