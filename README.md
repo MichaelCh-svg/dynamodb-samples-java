@@ -2,7 +2,7 @@
 
 VisitsDAO using lib-dynamodb.
 
-//Note: Do not get lib-dynamodb and client-dynamodb mixed up.lib-dynamodb is a layer on top of client-dynamodb that enables the programmer to write more simple queries and then translates those queries and sends them to client-dynamodb.
+//Note: Do not get lib-dynamodb and client-dynamodb mixed up. lib-dynamodb is a layer on top of client-dynamodb that enables the programmer to write more simple queries and then translates those queries and sends them to client-dynamodb.
 
 //IMPORTANT: Make sure that all calls to dynamodb use an await statement, otherwise the print output will not match as functions will be called in the wrong order.
 
