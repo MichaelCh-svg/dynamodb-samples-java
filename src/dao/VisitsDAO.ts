@@ -8,7 +8,6 @@ import {
 import { ddbDocClient } from "./ClientDynamo";
 import { Visit } from "../entity/Visit";
 import { DataPage } from "../entity/DataPage";
-enum t {}
 
 export class VisitsDAO {
   readonly TableName = "visit";
