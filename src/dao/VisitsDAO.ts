@@ -114,16 +114,6 @@ export class VisitsDAO {
    * @param limit The maximum number of locations to include in the result
    * @return The next page of locations visited by visitor
    */
-
-  /**
-   * Fetch the next page of visitors who have visited location
-   *
-   * @param location The location of interest
-   * @param pageSize The maximum number of visitors to include in the result
-   * @param lastVisitor The last visitor returned in the previous page of results
-   * @return The next page of visitors who have visited location
-   */
-
   async getVisitedLocations(
     visitor: string,
     lastLocation: string | undefined = undefined,
